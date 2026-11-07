@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Features\Auth\Livewire\Login;
 use App\Features\Stock\Models\Stock;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,7 +14,7 @@ class RoutingTest extends TestCase
 
     public function test_root_redirects_by_role(): void
     {
-        $this->get('/')->assertRedirect('/login');
+        $this->get('/')->assertOk()->assertSeeLivewire(Login::class);
         $this->actingAs(User::factory()->admin()->create())->get('/')->assertRedirect('/admin/users');
         $this->actingAs(User::factory()->create())->get('/')->assertRedirect('/stocks');
     }

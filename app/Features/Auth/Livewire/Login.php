@@ -19,6 +19,13 @@ class Login extends Component
 
     public bool $remember = false;
 
+    public function mount(): void
+    {
+        if (auth()->check()) {
+            $this->redirect(auth()->user()->isAdmin() ? '/admin/users' : '/stocks');
+        }
+    }
+
     public function submit(LoginUserAction $action)
     {
         $this->validate();

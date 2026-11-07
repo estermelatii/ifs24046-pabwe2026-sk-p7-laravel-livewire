@@ -12,15 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('throttle:1000-per-second')->group(function () {
-    Route::get('/', function () {
-        $user = Auth::user();
-
-        if (! $user) {
-            return redirect()->route('login');
-        }
-
-        return redirect($user->isAdmin() ? '/admin/users' : '/stocks');
-    })->name('home');
+    // Tamu langsung melihat halaman login (HTTP 200, tanpa redirect); user yang sudah login dialihkan oleh Login::mount().
+    Route::get('/', Login::class)->name('home');
 
     Route::middleware('guest')->group(function () {
         Route::get('/login', Login::class)->name('login');
