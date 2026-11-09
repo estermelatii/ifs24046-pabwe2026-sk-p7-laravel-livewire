@@ -18,5 +18,8 @@
     },
     "optionalDependencies": {
         "@laravel/multiplex": "^0.4.1"
+    },
+    "overrides": {
+        "dompurify": "^3.4.17"
     }
 }
