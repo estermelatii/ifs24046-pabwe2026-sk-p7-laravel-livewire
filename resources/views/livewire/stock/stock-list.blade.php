@@ -160,7 +160,7 @@
                    class="w-full rounded-xl border border-[#DCC9B8] bg-[#FFFCF9] py-2.5 pl-9 pr-3 text-sm placeholder:text-stone-400 focus:border-[#9A5B33] focus:outline-none focus:ring-2 focus:ring-[#9A5B33]/25">
         </div>
         <form wire:submit="import" class="flex items-center gap-2">
-            <input type="file" wire:model="importFile" accept=".xlsx"
+            <input type="file" wire:model="importFile" accept=".xlsx" aria-label="Pilih berkas Excel (.xlsx) untuk diimpor"
                    class="text-sm text-stone-600 file:mr-3 file:rounded-md file:border-0 file:bg-stone-200 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-[#3A2418] hover:file:bg-stone-300">
             <button type="submit" class="inline-flex items-center gap-2 rounded-xl border border-[#DCC9B8] bg-[#FFFCF9] px-3 py-2 text-sm font-medium transition-colors hover:border-[#9A5B33] hover:text-[#9A5B33]">
                 <x-icon name="upload" class="h-4 w-4" /> Impor

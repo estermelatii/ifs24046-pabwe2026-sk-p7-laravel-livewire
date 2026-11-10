@@ -16,7 +16,7 @@
             <span class="mt-2 inline-flex rounded-full bg-[#EFE2D6] px-3 py-1 text-xs font-semibold">{{ $user->isAdmin() ? 'Admin' : 'Member' }}</span>
 
             <form wire:submit="savePhoto" class="mt-6 space-y-3 border-t border-[#EFE2D6] pt-5 text-left">
-                <input type="file" wire:model="photo" accept="image/*"
+                <input type="file" wire:model="photo" accept="image/*" aria-label="Pilih foto profil"
                        class="block w-full text-sm text-stone-600 file:mr-3 file:rounded-md file:border-0 file:bg-stone-200 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-[#3A2418] hover:file:bg-stone-300">
                 @error('photo') <p class="text-sm text-red-600">{{ $message }}</p> @enderror
                 <button type="submit" class="w-full rounded-xl border border-[#DCC9B8] px-3.5 py-2 text-sm font-medium hover:border-[#9A5B33] hover:text-[#9A5B33]">Simpan foto</button>

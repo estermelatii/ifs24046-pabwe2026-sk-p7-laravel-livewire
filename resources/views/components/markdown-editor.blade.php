@@ -3,20 +3,26 @@
 <div wire:ignore
      x-data="{ editor: null, fallback: false }"
      x-init="
-        if (window.ToastEditor) {
-            editor = new window.ToastEditor({
-                el: $refs.host,
-                height: '320px',
-                initialEditType: 'markdown',
-                previewStyle: 'tab',
-                usageStatistics: false,
-                placeholder: 'Tulis deskripsi dengan Markdown...',
-                initialValue: $wire.{{ $model }} ?? '',
-            });
-            editor.on('change', () => { $wire.{{ $model }} = editor.getMarkdown(); });
-        } else {
-            fallback = true;
-        }
+        (async () => {
+            const host = $refs.host;
+            const wire = $wire;
+            if (! window.loadToastEditor) { fallback = true; return; }
+            try {
+                const Editor = await window.loadToastEditor();
+                editor = new Editor({
+                    el: host,
+                    height: '320px',
+                    initialEditType: 'markdown',
+                    previewStyle: 'tab',
+                    usageStatistics: false,
+                    placeholder: 'Tulis deskripsi dengan Markdown...',
+                    initialValue: wire.{{ $model }} ?? '',
+                });
+                editor.on('change', () => { wire.{{ $model }} = editor.getMarkdown(); });
+            } catch (e) {
+                fallback = true;
+            }
+        })()
      ">
     <label class="mb-1.5 block text-sm font-medium text-[#3A2418]">{{ $label }}</label>
     <div id="markdown-editor" x-ref="host" x-show="! fallback"></div>

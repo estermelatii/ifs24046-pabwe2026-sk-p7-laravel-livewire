@@ -87,7 +87,7 @@
             <section class="rounded-2xl border border-[#EADCCF] bg-[#FFFCF9] p-6">
                 <h2 class="mb-3 text-sm font-medium text-stone-600">Foto cover</h2>
                 <form wire:submit="saveCover" class="space-y-3">
-                    <input type="file" wire:model="cover" accept="image/*"
+                    <input type="file" wire:model="cover" accept="image/*" aria-label="Pilih foto cover stok"
                            class="block w-full text-sm text-stone-600 file:mr-3 file:rounded-md file:border-0 file:bg-stone-200 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-[#3A2418] hover:file:bg-stone-300">
                     @error('cover') <p class="text-sm text-red-600">{{ $message }}</p> @enderror
                     <div class="flex items-center gap-3">
